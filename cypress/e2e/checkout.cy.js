@@ -1,8 +1,10 @@
 describe('Checkout Spec', () => {
-    it('Verify that you can checkout as Guest', () => {
+    beforeEach(() => {
         // Navigate to Stampin Up Website (and wait for everything to load)
         cy.visit('https://www.stampinup.com/').wait(500)
+    })
 
+    it('Verify that you can checkout as Guest', () => {
         // Search for the Shopped Item (and wait for results to load)
         cy.get('[data-testid="search-placeholder"]').click().type('SCORING BLADES MULTIPACK')
         cy.get('.v-select__slot > :nth-child(3)').click().wait(300)
@@ -25,9 +27,6 @@ describe('Checkout Spec', () => {
     })
 
     it('Verify that you can checkout as existing Customer', () => {
-        // Navigate to Stampin Up Website (and wait for everything to load)
-        cy.visit('https://www.stampinup.com/').wait(500)
-
         // Search for the Shopped Item (and wait for results to load)
         cy.get('[data-testid="search-placeholder"]').click().type('ELEGANT BORDERS DIES')
         cy.get('.v-select__slot > :nth-child(3)').click().wait(300)
@@ -51,9 +50,6 @@ describe('Checkout Spec', () => {
     })
 
     it('Verify that you can checkout as a new Customer', () => {
-        // Navigate to Stampin Up Website (and wait for everything to load)
-        cy.visit('https://www.stampinup.com/').wait(500)
-
         // Search for the Shopped Item (and wait for results to load)
         cy.get('[data-testid="search-placeholder"]').click().type('SAYING THANKS KIT')
         cy.get('.v-select__slot > :nth-child(3)').click().wait(300)

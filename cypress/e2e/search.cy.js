@@ -1,8 +1,10 @@
 describe('Search Spec', () => {
-  it('Verify that item "SDET" does not exist', () => {
+  beforeEach(() => {
     // Navigate to Stampin Up Website (and wait for everything to load)
     cy.visit('https://www.stampinup.com/').wait(500)
+  })
 
+  it('Verify that item "SDET" does not exist', () => {
     // Search for the Not Existant Item "SDET" (and wait for results to load)
     cy.get('[data-testid="search-placeholder"]').click().type('SDET') 
     cy.get('.v-select__slot > :nth-child(3)').click().wait(300)
@@ -14,9 +16,6 @@ describe('Search Spec', () => {
   })
 
   it('Verify that item "A MILLION THANKS KIT" exists', () => {
-    // Navigate to Stampin Up Website (and wait for everything to load)
-    cy.visit('https://www.stampinup.com/').wait(500)
-
     // Search for an Existant Item "A MILLION THANKS KIT" (and wait for results to load)
     cy.get('[data-testid="search-placeholder"]').click().type('A MILLION THANKS KIT') 
     cy.get('.v-select__slot > :nth-child(3)').click().wait(300)
